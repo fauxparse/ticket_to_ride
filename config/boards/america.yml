@@ -1,0 +1,474 @@
+cities:
+  atlanta:
+    name: Atlanta
+  boston:
+    name: Boston
+  calgary:
+    name: Calgary
+  charleston:
+    name: Charleston
+  chicago:
+    name: Chicago
+  dallas:
+    name: Dallas
+  denver:
+    name: Denver
+  duluth:
+    name: Duluth
+  el_paso:
+    name: El Paso
+  helena:
+    name: Helena
+  houston:
+    name: Houston
+  kansas_city:
+    name: Kansas City
+  las_vegas:
+    name: Las Vegas
+  little_rock:
+    name: Little Rock
+  los_angeles:
+    name: Los Angeles
+  miami:
+    name: Miami
+  montreal:
+    name: Montréal
+  nashville:
+    name: Nashville
+  new_orleans:
+    name: New Orleans
+  new_york:
+    name: New York
+  oklahoma_city:
+    name: Oklahoma City
+  omaha:
+    name: Omaha
+  phoenix:
+    name: Phoenix
+  pittsburg:
+    name: Pittsburg
+  portland:
+    name: Portland
+  raleigh:
+    name: Raleigh
+  saint_louis:
+    name: Saint Louis
+  salt_lake_city:
+    name: Salt Lake City
+  san_francisco:
+    name: San Francisco
+  santa_fe:
+    name: Santa Fe
+  sault_st_marie:
+    name: Sault St Marie
+  seattle:
+    name: Seattle
+  toronto:
+    name: Toronto
+  vancouver:
+    name: Vancouver
+  washington:
+    name: Washington
+  winnipeg:
+    name: Winnipeg
+routes:
+  - from: vancouver
+    to: calgary
+    length: 3
+    color: gray
+  - from: vancouver
+    to: seattle
+    length: 1
+    color: gray
+  - from: vancouver
+    to: seattle
+    length: 1
+    color: gray
+  - from: calgary
+    to: seattle
+    length: 4
+    color: gray
+  - from: calgary
+    to: helena
+    length: 4
+    color: gray
+  - from: calgary
+    to: winnipeg
+    length: 6
+    color: white
+  - from: winnipeg
+    to: helena
+    length: 4
+    color: blue
+  - from: winnipeg
+    to: duluth
+    length: 4
+    color: black
+  - from: winnipeg
+    to: sault_st_marie
+    length: 6
+    color: gray
+  - from: sault_st_marie
+    to: duluth
+    length: 3
+    color: gray
+  - from: sault_st_marie
+    to: toronto
+    length: 2
+    color: gray
+  - from: sault_st_marie
+    to: montreal
+    length: 5
+    color: black
+  - from: montreal
+    to: toronto
+    length: 3
+    color: gray
+  - from: montreal
+    to: new_york
+    length: 3
+    color: blue
+  - from: montreal
+    to: boston
+    length: 2
+    color: gray
+  - from: montreal
+    to: boston
+    length: 2
+    color: gray
+  - from: boston
+    to: new_york
+    length: 2
+    color: red
+  - from: boston
+    to: new_york
+    length: 2
+    color: yellow
+  - from: new_york
+    to: washington
+    length: 2
+    color: black
+  - from: new_york
+    to: washington
+    length: 2
+    color: orange
+  - from: new_york
+    to: pittsburg
+    length: 2
+    color: white
+  - from: new_york
+    to: pittsburg
+    length: 2
+    color: green
+  - from: pittsburg
+    to: toronto
+    length: 2
+    color: gray
+  - from: pittsburg
+    to: chicago
+    length: 3
+    color: orange
+  - from: pittsburg
+    to: chicago
+    length: 3
+    color: black
+  - from: pittsburg
+    to: saint_louis
+    length: 5
+    color: green
+  - from: pittsburg
+    to: nashville
+    length: 4
+    color: yellow
+  - from: pittsburg
+    to: raleigh
+    length: 2
+    color: gray
+  - from: pittsburg
+    to: washington
+    length: 2
+    color: gray
+  - from: washington
+    to: raleigh
+    length: 2
+    color: gray
+  - from: washington
+    to: raleigh
+    length: 2
+    color: gray
+  - from: raleigh
+    to: nashville
+    length: 3
+    color: black
+  - from: raleigh
+    to: atlanta
+    length: 2
+    color: gray
+  - from: raleigh
+    to: atlanta
+    length: 2
+    color: gray
+  - from: raleigh
+    to: charleston
+    length: 2
+    color: gray
+  - from: charleston
+    to: atlanta
+    length: 2
+    color: gray
+  - from: charleston
+    to: miami
+    length: 4
+    color: pink
+  - from: miami
+    to: atlanta
+    length: 5
+    color: blue
+  - from: miami
+    to: new_orleans
+    length: 6
+    color: red
+  - from: atlanta
+    to: nashville
+    length: 1
+    color: gray
+  - from: atlanta
+    to: new_orleans
+    length: 4
+    color: yellow
+  - from: atlanta
+    to: new_orleans
+    length: 4
+    color: orange
+  - from: new_orleans
+    to: houston
+    length: 2
+    color: gray
+  - from: new_orleans
+    to: little_rock
+    length: 3
+    color: green
+  - from: nashville
+    to: little_rock
+    length: 3
+    color: white
+  - from: nashville
+    to: saint_louis
+    length: 2
+    color: gray
+  - from: seattle
+    to: portland
+    length: 1
+    color: gray
+  - from: seattle
+    to: portland
+    length: 1
+    color: gray
+  - from: seattle
+    to: helena
+    length: 6
+    color: yellow
+  - from: toronto
+    to: duluth
+    length: 6
+    color: pink
+  - from: toronto
+    to: chicago
+    length: 4
+    color: white
+  - from: chicago
+    to: duluth
+    length: 3
+    color: red
+  - from: chicago
+    to: omaha
+    length: 4
+    color: blue
+  - from: chicago
+    to: saint_louis
+    length: 2
+    color: green
+  - from: chicago
+    to: saint_louis
+    length: 2
+    color: white
+  - from: saint_louis
+    to: little_rock
+    length: 2
+    color: gray
+  - from: saint_louis
+    to: kansas_city
+    length: 2
+    color: blue
+  - from: saint_louis
+    to: kansas_city
+    length: 2
+    color: pink
+  - from: little_rock
+    to: oklahoma_city
+    length: 2
+    color: gray
+  - from: little_rock
+    to: dallas
+    length: 2
+    color: gray
+  - from: houston
+    to: dallas
+    length: 1
+    color: gray
+  - from: houston
+    to: dallas
+    length: 1
+    color: gray
+  - from: houston
+    to: el_paso
+    length: 6
+    color: green
+  - from: dallas
+    to: el_paso
+    length: 4
+    color: red
+  - from: dallas
+    to: oklahoma_city
+    length: 2
+    color: gray
+  - from: dallas
+    to: oklahoma_city
+    length: 2
+    color: gray
+  - from: oklahoma_city
+    to: kansas_city
+    length: 2
+    color: gray
+  - from: oklahoma_city
+    to: kansas_city
+    length: 2
+    color: gray
+  - from: oklahoma_city
+    to: denver
+    length: 4
+    color: red
+  - from: oklahoma_city
+    to: santa_fe
+    length: 3
+    color: red
+  - from: oklahoma_city
+    to: el_paso
+    length: 5
+    color: yellow
+  - from: kansas_city
+    to: omaha
+    length: 1
+    color: gray
+  - from: kansas_city
+    to: omaha
+    length: 1
+    color: gray
+  - from: kansas_city
+    to: denver
+    length: 4
+    color: black
+  - from: kansas_city
+    to: denver
+    length: 4
+    color: orange
+  - from: omaha
+    to: duluth
+    length: 2
+    color: gray
+  - from: omaha
+    to: duluth
+    length: 2
+    color: gray
+  - from: omaha
+    to: denver
+    length: 4
+    color: pink
+  - from: omaha
+    to: helena
+    length: 5
+    color: red
+  - from: duluth
+    to: helena
+    length: 6
+    color: orange
+  - from: helena
+    to: salt_lake_city
+    length: 3
+    color: pink
+  - from: helena
+    to: denver
+    length: 4
+    color: green
+  - from: portland
+    to: salt_lake_city
+    length: 6
+    color: blue
+  - from: portland
+    to: san_francisco
+    length: 5
+    color: green
+  - from: portland
+    to: san_francisco
+    length: 5
+    color: pink
+  - from: san_francisco
+    to: salt_lake_city
+    length: 5
+    color: orange
+  - from: san_francisco
+    to: salt_lake_city
+    length: 5
+    color: white
+  - from: san_francisco
+    to: los_angeles
+    length: 3
+    color: pink
+  - from: san_francisco
+    to: los_angeles
+    length: 3
+    color: yellow
+  - from: salt_lake_city
+    to: denver
+    length: 3
+    color: red
+  - from: salt_lake_city
+    to: denver
+    length: 3
+    color: yellow
+  - from: salt_lake_city
+    to: las_vegas
+    length: 3
+    color: orange
+  - from: las_vegas
+    to: los_angeles
+    length: 2
+    color: gray
+  - from: los_angeles
+    to: phoenix
+    length: 3
+    color: gray
+  - from: los_angeles
+    to: el_paso
+    length: 6
+    color: black
+  - from: denver
+    to: las_vegas
+    length: 5
+    color: white
+  - from: denver
+    to: santa_fe
+    length: 2
+    color: gray
+  - from: santa_fe
+    to: phoenix
+    length: 3
+    color: gray
+  - from: phoenix
+    to: el_paso
+    length: 3
+    color: gray
+  - from: santa_fe
+    to: el_paso
+    length: 2
+    color: gray
