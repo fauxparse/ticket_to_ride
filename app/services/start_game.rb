@@ -1,5 +1,5 @@
 class StartGame
-  attr_reader :game
+  attr_reader :game, :starting_hand_size
 
   def initialize(game, starting_hand_size: 4)
     @game = game

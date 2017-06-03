@@ -75,23 +75,23 @@ routes:
   - from: vancouver
     to: calgary
     length: 3
-    color: gray
+    color: wild
   - from: vancouver
     to: seattle
     length: 1
-    color: gray
+    color: wild
   - from: vancouver
     to: seattle
     length: 1
-    color: gray
+    color: wild
   - from: calgary
     to: seattle
     length: 4
-    color: gray
+    color: wild
   - from: calgary
     to: helena
     length: 4
-    color: gray
+    color: wild
   - from: calgary
     to: winnipeg
     length: 6
@@ -107,15 +107,15 @@ routes:
   - from: winnipeg
     to: sault_st_marie
     length: 6
-    color: gray
+    color: wild
   - from: sault_st_marie
     to: duluth
     length: 3
-    color: gray
+    color: wild
   - from: sault_st_marie
     to: toronto
     length: 2
-    color: gray
+    color: wild
   - from: sault_st_marie
     to: montreal
     length: 5
@@ -123,7 +123,7 @@ routes:
   - from: montreal
     to: toronto
     length: 3
-    color: gray
+    color: wild
   - from: montreal
     to: new_york
     length: 3
@@ -131,11 +131,11 @@ routes:
   - from: montreal
     to: boston
     length: 2
-    color: gray
+    color: wild
   - from: montreal
     to: boston
     length: 2
-    color: gray
+    color: wild
   - from: boston
     to: new_york
     length: 2
@@ -163,7 +163,7 @@ routes:
   - from: pittsburg
     to: toronto
     length: 2
-    color: gray
+    color: wild
   - from: pittsburg
     to: chicago
     length: 3
@@ -183,19 +183,19 @@ routes:
   - from: pittsburg
     to: raleigh
     length: 2
-    color: gray
+    color: wild
   - from: pittsburg
     to: washington
     length: 2
-    color: gray
+    color: wild
   - from: washington
     to: raleigh
     length: 2
-    color: gray
+    color: wild
   - from: washington
     to: raleigh
     length: 2
-    color: gray
+    color: wild
   - from: raleigh
     to: nashville
     length: 3
@@ -203,19 +203,19 @@ routes:
   - from: raleigh
     to: atlanta
     length: 2
-    color: gray
+    color: wild
   - from: raleigh
     to: atlanta
     length: 2
-    color: gray
+    color: wild
   - from: raleigh
     to: charleston
     length: 2
-    color: gray
+    color: wild
   - from: charleston
     to: atlanta
     length: 2
-    color: gray
+    color: wild
   - from: charleston
     to: miami
     length: 4
@@ -231,7 +231,7 @@ routes:
   - from: atlanta
     to: nashville
     length: 1
-    color: gray
+    color: wild
   - from: atlanta
     to: new_orleans
     length: 4
@@ -243,7 +243,7 @@ routes:
   - from: new_orleans
     to: houston
     length: 2
-    color: gray
+    color: wild
   - from: new_orleans
     to: little_rock
     length: 3
@@ -255,15 +255,15 @@ routes:
   - from: nashville
     to: saint_louis
     length: 2
-    color: gray
+    color: wild
   - from: seattle
     to: portland
     length: 1
-    color: gray
+    color: wild
   - from: seattle
     to: portland
     length: 1
-    color: gray
+    color: wild
   - from: seattle
     to: helena
     length: 6
@@ -295,7 +295,7 @@ routes:
   - from: saint_louis
     to: little_rock
     length: 2
-    color: gray
+    color: wild
   - from: saint_louis
     to: kansas_city
     length: 2
@@ -307,19 +307,19 @@ routes:
   - from: little_rock
     to: oklahoma_city
     length: 2
-    color: gray
+    color: wild
   - from: little_rock
     to: dallas
     length: 2
-    color: gray
+    color: wild
   - from: houston
     to: dallas
     length: 1
-    color: gray
+    color: wild
   - from: houston
     to: dallas
     length: 1
-    color: gray
+    color: wild
   - from: houston
     to: el_paso
     length: 6
@@ -331,19 +331,19 @@ routes:
   - from: dallas
     to: oklahoma_city
     length: 2
-    color: gray
+    color: wild
   - from: dallas
     to: oklahoma_city
     length: 2
-    color: gray
+    color: wild
   - from: oklahoma_city
     to: kansas_city
     length: 2
-    color: gray
+    color: wild
   - from: oklahoma_city
     to: kansas_city
     length: 2
-    color: gray
+    color: wild
   - from: oklahoma_city
     to: denver
     length: 4
@@ -359,11 +359,11 @@ routes:
   - from: kansas_city
     to: omaha
     length: 1
-    color: gray
+    color: wild
   - from: kansas_city
     to: omaha
     length: 1
-    color: gray
+    color: wild
   - from: kansas_city
     to: denver
     length: 4
@@ -375,11 +375,11 @@ routes:
   - from: omaha
     to: duluth
     length: 2
-    color: gray
+    color: wild
   - from: omaha
     to: duluth
     length: 2
-    color: gray
+    color: wild
   - from: omaha
     to: denver
     length: 4
@@ -443,11 +443,11 @@ routes:
   - from: las_vegas
     to: los_angeles
     length: 2
-    color: gray
+    color: wild
   - from: los_angeles
     to: phoenix
     length: 3
-    color: gray
+    color: wild
   - from: los_angeles
     to: el_paso
     length: 6
@@ -459,16 +459,16 @@ routes:
   - from: denver
     to: santa_fe
     length: 2
-    color: gray
+    color: wild
   - from: santa_fe
     to: phoenix
     length: 3
-    color: gray
+    color: wild
   - from: phoenix
     to: el_paso
     length: 3
-    color: gray
+    color: wild
   - from: santa_fe
     to: el_paso
     length: 2
-    color: gray
+    color: wild

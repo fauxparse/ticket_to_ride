@@ -1,5 +1,5 @@
 class DrawCard
-  attr_reader :player
+  attr_reader :player, :list
 
   def initialize(list)
     @list = list
