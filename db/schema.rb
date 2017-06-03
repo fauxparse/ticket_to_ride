@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603000420) do
+ActiveRecord::Schema.define(version: 20170603004242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 20170603000420) do
     t.index ["game_id"], name: "index_discard_piles_on_game_id"
   end
 
+  create_table "face_ups", force: :cascade do |t|
+    t.bigint "game_id"
+    t.index ["game_id"], name: "index_face_ups_on_game_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170603000420) do
 
   create_table "players", force: :cascade do |t|
     t.bigint "game_id"
-    t.integer "index"
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_players_on_game_id"
