@@ -54,5 +54,9 @@ module.exports = {
 
   resolveLoader: {
     modules: ['node_modules']
+  },
+
+  watchOptions: {
+    ignored: /node_modules/
   }
 }
