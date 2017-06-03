@@ -1,0 +1,2 @@
+class FaceUp < ApplicationRecord
+end
