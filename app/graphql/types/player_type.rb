@@ -4,6 +4,9 @@ module Types
     description 'A player'
 
     field :position, !types.Int
+    field :name, !types.String do
+      resolve ->(player, _, _) { "Player #{player.position}" }
+    end
 
     connection :cards, CardType.connection_type
   end

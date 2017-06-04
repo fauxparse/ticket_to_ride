@@ -6,8 +6,13 @@ module Types
       description 'A game in progress'
 
       argument :id, !types.ID
+      argument :player, !types.Int
 
-      resolve ->(obj, args, ctx) { Game.find(args['id']) }
+      resolve ->(obj, args, ctx) do
+        game = Game.includes(:players).find(args['id'])
+        player = game.players.at_position(args['player'])
+        GameView.new(game, player)
+      end
     end
 
     field :node, GraphQL::Relay::Node.field

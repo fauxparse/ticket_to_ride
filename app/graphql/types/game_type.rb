@@ -3,9 +3,10 @@ module Types
     name 'Game'
     description 'A game'
 
+    field :player_position, !types.Int
+
     connection :players, PlayerType.connection_type
-    connection :face_up_cards, CardType.connection_type do
-      resolve ->(game, args, context) { game.face_up.cards }
-    end
+    connection :hand, CardType.connection_type
+    connection :face_up_cards, CardType.connection_type
   end
 end

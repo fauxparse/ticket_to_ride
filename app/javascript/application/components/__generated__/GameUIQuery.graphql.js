@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule GameUIQuery.graphql
- * @generated SignedSource<<cd320af630de6cd0366aebf941090a0c>>
- * @relayHash 2842de14c44ff5c1c8693fe195138340
+ * @generated SignedSource<<6b6aaf8ef8dd9eceb7d171f6132433f8>>
+ * @relayHash a79a43ec0270034e3c5067d0b7469c85
  * @flow
  * @nogrep
  */
@@ -22,23 +22,55 @@ import type {ConcreteBatch} from 'relay-runtime';
 /*
 query GameUIQuery(
   $gameId: ID!
+  $player: Int!
 ) {
-  game(id: $gameId) {
-    players {
-      edges {
-        node {
-          position
-          cards {
-            edges {
-              node {
-                color
-              }
-            }
-          }
-        }
+  game(id: $gameId, player: $player) {
+    ...PlayerList
+    ...Hand
+    ...FaceUpCards
+  }
+}
+
+fragment PlayerList on Game {
+  players {
+    edges {
+      node {
+        ...Player
       }
     }
   }
+  player_position
+}
+
+fragment Hand on Game {
+  hand {
+    edges {
+      node {
+        ...Card
+      }
+    }
+  }
+  player_position
+}
+
+fragment FaceUpCards on Game {
+  face_up_cards {
+    edges {
+      node {
+        ...Card
+      }
+    }
+  }
+}
+
+fragment Card on Card {
+  position
+  color
+}
+
+fragment Player on Player {
+  position
+  name
 }
 */
 
@@ -49,6 +81,12 @@ const batch /*: ConcreteBatch*/ = {
         "kind": "LocalArgument",
         "name": "gameId",
         "type": "ID!",
+        "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
+        "name": "player",
+        "type": "Int!",
         "defaultValue": null
       }
     ],
@@ -65,6 +103,12 @@ const batch /*: ConcreteBatch*/ = {
             "name": "id",
             "variableName": "gameId",
             "type": "ID!"
+          },
+          {
+            "kind": "Variable",
+            "name": "player",
+            "variableName": "player",
+            "type": "Int!"
           }
         ],
         "concreteType": "Game",
@@ -72,84 +116,19 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "PlayerConnection",
-            "name": "players",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "args": null,
-                "concreteType": "PlayerEdge",
-                "name": "edges",
-                "plural": true,
-                "selections": [
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "Player",
-                    "name": "node",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "position",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "CardConnection",
-                        "name": "cards",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "args": null,
-                            "concreteType": "CardEdge",
-                            "name": "edges",
-                            "plural": true,
-                            "selections": [
-                              {
-                                "kind": "LinkedField",
-                                "alias": null,
-                                "args": null,
-                                "concreteType": "Card",
-                                "name": "node",
-                                "plural": false,
-                                "selections": [
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": null,
-                                    "args": null,
-                                    "name": "color",
-                                    "storageKey": null
-                                  }
-                                ],
-                                "storageKey": null
-                              }
-                            ],
-                            "storageKey": null
-                          }
-                        ],
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
+            "kind": "FragmentSpread",
+            "name": "PlayerList",
+            "args": null
+          },
+          {
+            "kind": "FragmentSpread",
+            "name": "Hand",
+            "args": null
+          },
+          {
+            "kind": "FragmentSpread",
+            "name": "FaceUpCards",
+            "args": null
           }
         ],
         "storageKey": null
@@ -168,6 +147,12 @@ const batch /*: ConcreteBatch*/ = {
         "name": "gameId",
         "type": "ID!",
         "defaultValue": null
+      },
+      {
+        "kind": "LocalArgument",
+        "name": "player",
+        "type": "Int!",
+        "defaultValue": null
       }
     ],
     "kind": "Root",
@@ -183,6 +168,12 @@ const batch /*: ConcreteBatch*/ = {
             "name": "id",
             "variableName": "gameId",
             "type": "ID!"
+          },
+          {
+            "kind": "Variable",
+            "name": "player",
+            "variableName": "player",
+            "type": "Int!"
           }
         ],
         "concreteType": "Game",
@@ -221,43 +212,111 @@ const batch /*: ConcreteBatch*/ = {
                         "storageKey": null
                       },
                       {
-                        "kind": "LinkedField",
+                        "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "concreteType": "CardConnection",
-                        "name": "cards",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "args": null,
-                            "concreteType": "CardEdge",
-                            "name": "edges",
-                            "plural": true,
-                            "selections": [
-                              {
-                                "kind": "LinkedField",
-                                "alias": null,
-                                "args": null,
-                                "concreteType": "Card",
-                                "name": "node",
-                                "plural": false,
-                                "selections": [
-                                  {
-                                    "kind": "ScalarField",
-                                    "alias": null,
-                                    "args": null,
-                                    "name": "color",
-                                    "storageKey": null
-                                  }
-                                ],
-                                "storageKey": null
-                              }
-                            ],
-                            "storageKey": null
-                          }
-                        ],
+                        "name": "name",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "player_position",
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "CardConnection",
+            "name": "hand",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "CardEdge",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Card",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "position",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "color",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "args": null,
+            "concreteType": "CardConnection",
+            "name": "face_up_cards",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "CardEdge",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Card",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "position",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "color",
                         "storageKey": null
                       }
                     ],
@@ -274,7 +333,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query GameUIQuery(\n  $gameId: ID!\n) {\n  game(id: $gameId) {\n    players {\n      edges {\n        node {\n          position\n          cards {\n            edges {\n              node {\n                color\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n"
+  "text": "query GameUIQuery(\n  $gameId: ID!\n  $player: Int!\n) {\n  game(id: $gameId, player: $player) {\n    ...PlayerList\n    ...Hand\n    ...FaceUpCards\n  }\n}\n\nfragment PlayerList on Game {\n  players {\n    edges {\n      node {\n        ...Player\n      }\n    }\n  }\n  player_position\n}\n\nfragment Hand on Game {\n  hand {\n    edges {\n      node {\n        ...Card\n      }\n    }\n  }\n  player_position\n}\n\nfragment FaceUpCards on Game {\n  face_up_cards {\n    edges {\n      node {\n        ...Card\n      }\n    }\n  }\n}\n\nfragment Card on Card {\n  position\n  color\n}\n\nfragment Player on Player {\n  position\n  name\n}\n"
 };
 
 module.exports = batch;
