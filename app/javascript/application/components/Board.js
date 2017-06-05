@@ -88,23 +88,24 @@ const BoardCity = ({ name, id, x, y }) => (
   </g>
 )
 
+const rotate = (a, n) => a.slice(n % a.length).concat(a.slice(0, n % a.length))
+
 class BoardRouteGroup extends React.Component {
   render() {
     const { a, b, routes } = this.props
     return (
       <g>
-        {routes.map(({ color, length }, i) => (
-          <BoardRoute
-            key={i}
-            x={a.x}
-            y={a.y}
-            x2={b.x}
-            y2={b.y}
-            radius={this.curveRadius()}
-            color={color.toLowerCase()}
-            length={length}
-          />
-        ))}
+        {routes.map(({ color, length }, i) => {
+          const [[x, y], [x2, y2]] = rotate([[a.x, a.y], [b.x, b.y]], i)
+          return (
+            <BoardRoute
+              key={i}
+              {...{ x, y, x2, y2, length }}
+              radius={this.curveRadius()}
+              color={color.toLowerCase()}
+            />
+          )
+        })}
       </g>
     )
   }

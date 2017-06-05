@@ -9,9 +9,8 @@ class Hand extends React.Component {
     const position = this.props.data.player_position
     return (
       <section className="hand">
-        <h3>Player {position}’s hand</h3>
         <div className="cards">
-          {cards.map((card, i) => <Card key={i} data={card} />)}
+          {cards.slice(0).reverse().map((card, i) => <Card key={i} data={card} facing={true} />)}
         </div>
       </section>
     )

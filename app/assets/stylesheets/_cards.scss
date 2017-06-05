@@ -1,0 +1,144 @@
+$card-width: 6em;
+$card-height: 8em;
+$card-border: 0.5em;
+
+.cards {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  padding: $card-border;
+
+  .card-container {
+    flex: 0 1 ($card-width + $card-border);
+    position: relative;
+    height: $card-height;
+
+    &:first-child {
+      flex-basis: $card-width;
+      flex-shrink: 0;
+    }
+  }
+
+  aside & {
+    flex-direction: column;
+
+    .card-container {
+      flex: 0 1 ($card-width + $card-border);
+      width: $card-height;
+      height: auto;
+
+      .card {
+        top: 100%;
+        transform: rotate(-90deg);
+        transform-origin: 0 0;
+      }
+    }
+  }
+}
+
+.card {
+  &,
+  .face,
+  .back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $card-width;
+    height: $card-height;
+  }
+
+  .face,
+  .back {
+    border: $card-border solid material-color('grey', '100');
+    border-radius: $card-border;
+    background: material-color('grey', '300');
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.15);
+    backface-visibility: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .back {
+    background: material-color('blue-grey', '600');
+    overflow: hidden;
+    transform: translateY(0) rotateX(0deg);
+    transform-origin: 50% 100%;
+
+    &::before {
+      content: "🛤";
+      position: absolute;
+      left: 0;
+      bottom: -0.1em;
+      font-size: 5em;
+      line-height: 1em;
+      mix-blend-mode: multiply;
+    }
+  }
+
+  .face {
+    background: material-color('grey', '300');
+    transform: translateY(-100%) rotateX(180deg);
+    transform-origin: 50% 100%;
+
+    &::after {
+      content: "🚃";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin: -0.75em;
+      font-size: 2em;
+      line-height: 1.5em;
+      text-align: center;
+      width: 1.5em;
+      height: 1.5em;
+      background: white;
+      border-radius: 50%;
+    }
+  }
+
+  &.facing {
+    .face {
+      transform: translateY(0) rotateX(0deg);
+    }
+
+    .back {
+      transform: translateY(-100%) rotateX(180deg);
+    }
+  }
+
+  &[data-color="pink"] .face { background: material-color('pink', '500'); }
+  &[data-color="white"] .face { background: white; }
+  &[data-color="blue"] .face { background: material-color('blue', '500'); }
+  &[data-color="yellow"] .face { background: material-color('yellow', '500'); }
+  &[data-color="orange"] .face { background: material-color('orange', '500'); }
+  &[data-color="black"] .face { background: material-color('grey', '900'); }
+  &[data-color="red"] .face { background: material-color('red', '500'); }
+  &[data-color="green"] .face { background: material-color('green', '500'); }
+  &[data-color="wild"] .face {
+    background:
+      radial-gradient(material-color('pink', '500') 50%, transparent 50%) 0 0,
+      radial-gradient(material-color('orange', '500') 50%, transparent 50%) 0 0.75em,
+      radial-gradient(material-color('grey', '900') 50%, transparent 50%) 0 1.5em,
+      radial-gradient(white 50%, transparent 50%) 0 2.25em,
+      radial-gradient(material-color('blue', '500') 50%, transparent 50%) 0 3em,
+      radial-gradient(material-color('green', '500') 50%, transparent 50%) 0 3.75em,
+      radial-gradient(material-color('yellow', '500') 50%, transparent 50%) 0 4.5em,
+      radial-gradient(material-color('red', '500') 50%, transparent 50%) 0 5.25em,
+      radial-gradient(material-color('pink', '500') 50%, transparent 50%) 4.25em 6.25em,
+      radial-gradient(material-color('orange', '500') 50%, transparent 50%) 4.25em 5.5em,
+      radial-gradient(material-color('grey', '900') 50%, transparent 50%) 4.25em 4.75em,
+      radial-gradient(white 50%, transparent 50%) 4.25em 4em,
+      radial-gradient(material-color('blue', '500') 50%, transparent 50%) 4.25em 3.25em,
+      radial-gradient(material-color('green', '500') 50%, transparent 50%) 4.25em 2.5em,
+      radial-gradient(material-color('yellow', '500') 50%, transparent 50%) 4.25em 1.75em,
+      radial-gradient(material-color('red', '500') 50%, transparent 50%) 4.25em 1em,
+      material-color('grey', '300');
+    background-size: 0.75em 0.75em;
+    background-repeat: no-repeat;
+
+    &::after {
+      content: "🚂";
+    }
+  }
+}

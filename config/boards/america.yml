@@ -153,8 +153,8 @@ routes:
     to: vancouver
     length: 1
     color: wild
-  - to: seattle
-    from: vancouver
+  - from: seattle
+    to: vancouver
     length: 1
     color: wild
   - from: calgary
@@ -205,32 +205,32 @@ routes:
     to: boston
     length: 2
     color: wild
-  - to: montreal
-    from: boston
+  - from: montreal
+    to: boston
     length: 2
     color: wild
   - from: boston
     to: new_york
     length: 2
     color: red
-  - to: boston
-    from: new_york
+  - from: boston
+    to: new_york
     length: 2
     color: yellow
   - from: new_york
     to: washington
     length: 2
     color: black
-  - to: new_york
-    from: washington
+  - from: new_york
+    to: washington
     length: 2
     color: orange
   - from: new_york
     to: pittsburg
     length: 2
     color: white
-  - to: new_york
-    from: pittsburg
+  - from: new_york
+    to: pittsburg
     length: 2
     color: green
   - from: pittsburg
@@ -241,8 +241,8 @@ routes:
     to: chicago
     length: 3
     color: orange
-  - to: pittsburg
-    from: chicago
+  - from: pittsburg
+    to: chicago
     length: 3
     color: black
   - from: pittsburg
@@ -265,8 +265,8 @@ routes:
     to: raleigh
     length: 2
     color: wild
-  - to: washington
-    from: raleigh
+  - from: washington
+    to: raleigh
     length: 2
     color: wild
   - from: nashville
@@ -277,8 +277,8 @@ routes:
     to: atlanta
     length: 2
     color: wild
-  - to: raleigh
-    from: atlanta
+  - from: raleigh
+    to: atlanta
     length: 2
     color: wild
   - from: raleigh
@@ -293,12 +293,12 @@ routes:
     to: miami
     length: 4
     color: pink
-  - to: miami
-    from: atlanta
+  - from: atlanta
+    to: miami
     length: 5
     color: blue
-  - to: miami
-    from: new_orleans
+  - from: new_orleans
+    to: miami
     length: 6
     color: red
   - from: atlanta
@@ -309,8 +309,8 @@ routes:
     to: new_orleans
     length: 4
     color: yellow
-  - to: atlanta
-    from: new_orleans
+  - from: atlanta
+    to: new_orleans
     length: 4
     color: orange
   - from: new_orleans
@@ -333,12 +333,12 @@ routes:
     to: portland
     length: 1
     color: wild
-  - to: seattle
-    from: portland
+  - from: seattle
+    to: portland
     length: 1
     color: wild
-  - to: seattle
-    from: helena
+  - from: helena
+    to: seattle
     length: 6
     color: yellow
   - from: toronto
@@ -353,16 +353,16 @@ routes:
     to: duluth
     length: 3
     color: red
-  - to: chicago
-    from: omaha
+  - from: omaha
+    to: chicago
     length: 4
     color: blue
   - from: chicago
     to: saint_louis
     length: 2
     color: green
-  - to: chicago
-    from: saint_louis
+  - from: chicago
+    to: saint_louis
     length: 2
     color: white
   - from: saint_louis
@@ -373,8 +373,8 @@ routes:
     to: kansas_city
     length: 2
     color: pink
-  - to: saint_louis
-    from: kansas_city
+  - from: saint_louis
+    to: kansas_city
     length: 2
     color: blue
   - from: little_rock
@@ -389,8 +389,8 @@ routes:
     to: dallas
     length: 1
     color: wild
-  - to: houston
-    from: dallas
+  - from: houston
+    to: dallas
     length: 1
     color: wild
   - from: houston
@@ -405,16 +405,16 @@ routes:
     to: oklahoma_city
     length: 2
     color: wild
-  - to: dallas
-    from: oklahoma_city
+  - from: dallas
+    to: oklahoma_city
     length: 2
     color: wild
   - from: oklahoma_city
     to: kansas_city
     length: 2
     color: wild
-  - to: oklahoma_city
-    from: kansas_city
+  - from: oklahoma_city
+    to: kansas_city
     length: 2
     color: wild
   - from: oklahoma_city
@@ -433,28 +433,28 @@ routes:
     to: omaha
     length: 1
     color: wild
-  - to: kansas_city
-    from: omaha
+  - from: kansas_city
+    to: omaha
     length: 1
     color: wild
   - from: kansas_city
     to: denver
     length: 4
     color: orange
-  - to: kansas_city
-    from: denver
+  - from: kansas_city
+    to: denver
     length: 4
     color: black
   - from: omaha
     to: duluth
     length: 2
     color: wild
-  - to: omaha
-    from: duluth
+  - from: omaha
+    to: duluth
     length: 2
     color: wild
-  - to: omaha
-    from: denver
+  - from: denver
+    to: omaha
     length: 4
     color: pink
   - from: omaha
@@ -477,8 +477,8 @@ routes:
     to: salt_lake_city
     length: 6
     color: blue
-  - to: portland
-    from: san_francisco
+  - from: portland
+    to: san_francisco
     length: 5
     color: green
   - from: portland
@@ -489,40 +489,40 @@ routes:
     to: salt_lake_city
     length: 5
     color: orange
-  - to: san_francisco
-    from: salt_lake_city
+  - from: san_francisco
+    to: salt_lake_city
     length: 5
     color: white
   - from: san_francisco
     to: los_angeles
     length: 3
     color: pink
-  - to: san_francisco
-    from: los_angeles
+  - from: san_francisco
+    to: los_angeles
     length: 3
     color: yellow
   - from: salt_lake_city
     to: denver
     length: 3
     color: red
-  - to: salt_lake_city
-    from: denver
+  - from: salt_lake_city
+    to: denver
     length: 3
     color: yellow
   - from: salt_lake_city
     to: las_vegas
     length: 3
     color: orange
-  - to: las_vegas
-    from: los_angeles
+  - from: los_angeles
+    to: las_vegas
     length: 2
     color: wild
   - from: los_angeles
     to: phoenix
     length: 3
     color: wild
-  - to: los_angeles
-    from: el_paso
+  - from: el_paso
+    to: los_angeles
     length: 6
     color: black
   - from: denver
@@ -537,8 +537,8 @@ routes:
     to: phoenix
     length: 3
     color: wild
-  - to: phoenix
-    from: el_paso
+  - from: el_paso
+    to: phoenix
     length: 3
     color: wild
   - from: santa_fe

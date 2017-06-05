@@ -8,9 +8,8 @@ class FaceUpCards extends React.Component {
     const cards = this.props.data.face_up_cards
     return (
       <section className="face-up">
-        <h3>Face up</h3>
         <div className="cards">
-          {cards.map((card, i) => <Card key={i} data={card} />)}
+          {cards.map((card, i) => <Card key={i} data={card} facing={true} />)}
         </div>
       </section>
     )

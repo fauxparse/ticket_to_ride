@@ -47,18 +47,18 @@ class Game extends React.Component {
     } else if (props) {
       return (
         <div className="game">
+          <header>
+            <PlayerList data={props.game} />
+          </header>
           <main>
-            <header>
-              <PlayerList data={props.game} />
-            </header>
             <Board data={props.game} />
-            <footer>
-              <Hand data={props.game} />
-            </footer>
+            <aside>
+              <FaceUpCards data={props.game} />
+            </aside>
           </main>
-          <aside>
-            <FaceUpCards data={props.game} />
-          </aside>
+          <footer>
+            <Hand data={props.game} />
+          </footer>
         </div>
       )
     } else {

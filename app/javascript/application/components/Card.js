@@ -5,9 +5,13 @@ import classNames from 'classnames'
 class Card extends React.Component {
   render() {
     const { color } = this.props.data
+    const { facing } = this.props
     return (
-      <div className="card" data-color={color.toLowerCase()}>
-        {color}
+      <div className="card-container">
+        <div className={classNames('card', { facing })} data-color={color.toLowerCase()}>
+          <div className="face"/>
+          <div className="back"/>
+        </div>
       </div>
     )
   }
