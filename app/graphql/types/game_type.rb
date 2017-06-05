@@ -4,9 +4,10 @@ module Types
     description 'A game'
 
     field :player_position, !types.Int
+    field :board, !BoardType
 
-    connection :players, PlayerType.connection_type
-    connection :hand, CardType.connection_type
-    connection :face_up_cards, CardType.connection_type
+    field :players, !types[PlayerType]
+    field :hand, !types[CardType]
+    field :face_up_cards, !types[CardType]
   end
 end

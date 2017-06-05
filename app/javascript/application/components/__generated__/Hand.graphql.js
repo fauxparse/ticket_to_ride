@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Hand.graphql
- * @generated SignedSource<<bbb1c618bca1d9cab4ad784dcdabcee2>>
+ * @generated SignedSource<<16c5a8975ce54fb9aa0d1e49c6335e80>>
  * @flow
  * @nogrep
  */
@@ -15,11 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Hand = {|
-  +hand: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{| |};
-    |}>;
-  |};
+  +hand: $ReadOnlyArray<?{| |}>;
   +player_position: number;
 |};
 */
@@ -35,36 +31,14 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "LinkedField",
       "alias": null,
       "args": null,
-      "concreteType": "CardConnection",
+      "concreteType": "Card",
       "name": "hand",
-      "plural": false,
+      "plural": true,
       "selections": [
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "CardEdge",
-          "name": "edges",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "args": null,
-              "concreteType": "Card",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "FragmentSpread",
-                  "name": "Card",
-                  "args": null
-                }
-              ],
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
+          "kind": "FragmentSpread",
+          "name": "Card",
+          "args": null
         }
       ],
       "storageKey": null

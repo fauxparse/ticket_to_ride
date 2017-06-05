@@ -1,3 +1,79 @@
-// Place all the styles related to the games controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    header {
+      background: #eee;
+    }
+
+    footer {
+      background: #eee;
+    }
+
+    .board {
+      flex: 1;
+      background: white;
+    }
+  }
+
+  aside {
+    background: #eee;
+  }
+}
+
+.board .city {
+  circle {
+    fill: material-color('grey', '600');
+  }
+
+  text {
+    fill: black;
+    paint-order: stroke;
+    stroke: white;
+    stroke-width: 4px;
+  }
+}
+
+.board .route {
+  path {
+    stroke: material-color('grey', '300');
+    stroke-width: 2px;
+    fill: none;
+  }
+
+  path.outline {
+    stroke-width: 4px;
+  }
+
+  &[data-color="pink"] .outline { stroke: material-color('pink', '500'); }
+  &[data-color="pink"] .fill { stroke: material-color('pink', '200'); }
+  &[data-color="white"] .outline { stroke: material-color('grey', '500'); }
+  &[data-color="white"] .fill { stroke: white; }
+  &[data-color="blue"] .outline { stroke: material-color('blue', '500'); }
+  &[data-color="blue"] .fill { stroke: material-color('blue', '200'); }
+  &[data-color="yellow"] .outline { stroke: material-color('yellow', '500'); }
+  &[data-color="yellow"] .fill { stroke: material-color('yellow', '200'); }
+  &[data-color="orange"] .outline { stroke: material-color('orange', '500'); }
+  &[data-color="orange"] .fill { stroke: material-color('orange', '200'); }
+  &[data-color="black"] .outline { stroke: material-color('grey', '900'); }
+  &[data-color="black"] .fill { stroke: material-color('grey', '600'); }
+  &[data-color="red"] .outline { stroke: material-color('red', '500'); }
+  &[data-color="red"] .fill { stroke: material-color('red', '200'); }
+  &[data-color="green"] .outline { stroke: material-color('green', '500'); }
+  &[data-color="green"] .fill { stroke: material-color('green', '200'); }
+  &[data-color="wild"] .fill { stroke: material-color('grey', '300'); }
+  &[data-color="wild"] .outline { stroke: material-color('grey', '400'); }
+}

@@ -77,6 +77,8 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
+    normalize-scss (7.0.0)
+      sass (~> 3.3)
     pg (0.20.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -136,6 +138,7 @@ GEM
     rspec-support (3.6.0)
     ruby_dep (1.5.0)
     sass (3.4.24)
+    sass-material-colors (0.0.5)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
@@ -185,12 +188,14 @@ DEPENDENCIES
   graphql
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  normalize-scss
   pg (~> 0.18)
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.1)
   rspec-collection_matchers
   rspec-rails
+  sass-material-colors
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

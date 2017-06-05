@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule FaceUpCards.graphql
- * @generated SignedSource<<a3e491eaba196633fa80fb6339f4afd8>>
+ * @generated SignedSource<<ea4acec0daca5d845c3d29535cefb502>>
  * @flow
  * @nogrep
  */
@@ -15,11 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type FaceUpCards = {|
-  +face_up_cards: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{| |};
-    |}>;
-  |};
+  +face_up_cards: $ReadOnlyArray<?{| |}>;
 |};
 */
 
@@ -34,36 +30,14 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "LinkedField",
       "alias": null,
       "args": null,
-      "concreteType": "CardConnection",
+      "concreteType": "Card",
       "name": "face_up_cards",
-      "plural": false,
+      "plural": true,
       "selections": [
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "CardEdge",
-          "name": "edges",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "args": null,
-              "concreteType": "Card",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "FragmentSpread",
-                  "name": "Card",
-                  "args": null
-                }
-              ],
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
+          "kind": "FragmentSpread",
+          "name": "Card",
+          "args": null
         }
       ],
       "storageKey": null

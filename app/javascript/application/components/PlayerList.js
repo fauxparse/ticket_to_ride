@@ -7,7 +7,7 @@ class PlayerList extends React.Component {
     const { players, player_position: me } = this.props.data
     return (
       <ol className="players">
-        {players.edges.map(({ node }, i) => <Player key={i} data={node} me={me}/>)}
+        {players.map((player, i) => <Player key={i} data={player} me={me}/>)}
       </ol>
     )
   }
@@ -16,11 +16,7 @@ class PlayerList extends React.Component {
 export default createFragmentContainer(PlayerList, graphql`
   fragment PlayerList on Game {
     players {
-      edges {
-        node {
-          ...Player
-        }
-      }
+      ...Player
     }
     player_position
   }

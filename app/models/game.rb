@@ -7,4 +7,11 @@ class Game < ApplicationRecord
       detect { |player| player.position == position.to_i }
     end
   end
+
+  validates :board_name, presence: true, length: { in: (1..64) }
+  validates :board, presence: true
+
+  def board
+    @board ||= Board.new(board_name)
+  end
 end

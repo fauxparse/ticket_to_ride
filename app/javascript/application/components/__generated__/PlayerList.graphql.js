@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule PlayerList.graphql
- * @generated SignedSource<<decb85394c45eb400328e43ebee34e39>>
+ * @generated SignedSource<<6db0fda51f4c841631a19552fb3b4354>>
  * @flow
  * @nogrep
  */
@@ -15,11 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type PlayerList = {|
-  +players: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{| |};
-    |}>;
-  |};
+  +players: $ReadOnlyArray<?{| |}>;
   +player_position: number;
 |};
 */
@@ -35,36 +31,14 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "LinkedField",
       "alias": null,
       "args": null,
-      "concreteType": "PlayerConnection",
+      "concreteType": "Player",
       "name": "players",
-      "plural": false,
+      "plural": true,
       "selections": [
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "PlayerEdge",
-          "name": "edges",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "args": null,
-              "concreteType": "Player",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "FragmentSpread",
-                  "name": "Player",
-                  "args": null
-                }
-              ],
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
+          "kind": "FragmentSpread",
+          "name": "Player",
+          "args": null
         }
       ],
       "storageKey": null

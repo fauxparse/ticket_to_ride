@@ -18,5 +18,5 @@ class GameView
     player.position
   end
 
-  delegate :players, to: :game
+  delegate :players, :board, to: :game
 end

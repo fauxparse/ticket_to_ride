@@ -5,12 +5,12 @@ import Card from './card'
 
 class FaceUpCards extends React.Component {
   render() {
-    const cards = this.props.data.face_up_cards.edges
+    const cards = this.props.data.face_up_cards
     return (
       <section className="face-up">
         <h3>Face up</h3>
         <div className="cards">
-          {cards.map(({ node }, i) => <Card key={i} data={node} />)}
+          {cards.map((card, i) => <Card key={i} data={card} />)}
         </div>
       </section>
     )
@@ -20,11 +20,7 @@ class FaceUpCards extends React.Component {
 export default createFragmentContainer(FaceUpCards, graphql`
   fragment FaceUpCards on Game {
     face_up_cards {
-      edges {
-        node {
-          ...Card
-        }
-      }
+      ...Card
     }
   }
 `)

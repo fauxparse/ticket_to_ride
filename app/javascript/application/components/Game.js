@@ -6,6 +6,7 @@ import environment from '../environment'
 import PlayerList from './PlayerList'
 import Hand from './Hand'
 import FaceUpCards from './FaceUpCards'
+import Board from './Board'
 
 class Game extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class Game extends React.Component {
                 ...PlayerList
                 ...Hand
                 ...FaceUpCards
+                ...Board
               }
             }
           `}
@@ -45,9 +47,18 @@ class Game extends React.Component {
     } else if (props) {
       return (
         <div className="game">
-          <PlayerList data={props.game} />
-          <Hand data={props.game} />
-          <FaceUpCards data={props.game} />
+          <main>
+            <header>
+              <PlayerList data={props.game} />
+            </header>
+            <Board data={props.game} />
+            <footer>
+              <Hand data={props.game} />
+            </footer>
+          </main>
+          <aside>
+            <FaceUpCards data={props.game} />
+          </aside>
         </div>
       )
     } else {

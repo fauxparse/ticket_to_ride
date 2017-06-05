@@ -1,2 +1,2 @@
-<%= content_tag :main, nil, data: { 'game-id' => @game.id, 'player' => 1 } %>
+<%= content_tag :div, nil, id: 'game', data: { 'game-id' => @game.id, 'player' => 1 } %>
 <%= javascript_pack_tag 'application' %>
