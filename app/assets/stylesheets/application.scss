@@ -2,6 +2,7 @@
 @import "normalize";
 @import "sass-material-colors";
 @import "cards";
+@import "players";
 @import "games";
 
 html, body {
@@ -9,6 +10,6 @@ html, body {
   font-family: 'Rubik', sans-serif;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }

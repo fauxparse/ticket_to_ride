@@ -7,7 +7,9 @@ class Player extends React.Component {
     const { me } = this.props
     const { name, position } = this.props.data
     return (
-      <li className={classNames('player', { me: me == position })}>{name}</li>
+      <li className={classNames('player', { me: me == position })} data-position={position}>
+        <div className="name">{name}</div>
+      </li>
     )
   }
 }

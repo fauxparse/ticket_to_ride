@@ -1,0 +1,67 @@
+$player-colors: (
+  1: 'blue',
+  2: 'red',
+  3: 'green',
+  4: 'yellow',
+  5: 'black'
+);
+
+$player-icons: (
+  1: '🦄',
+  2: '👻',
+  3: '🤖',
+  4: '🦊',
+  5: '🐙'
+);
+
+@function player-color($player, $intensity: '500') {
+  @if $player == 5 {
+    @return material-color('grey', '900');
+  } @else {
+    @return material-color(map-get($player-colors, $player), $intensity);
+  }
+}
+
+.players {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.5em 0 0.5em 0.5em;
+
+  .player {
+    position: relative;
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    margin-right: 0.5em;
+    border-radius: 2em;
+    color: white;
+
+    .name {
+      padding: 0 0.5em;
+    }
+
+    &::before {
+      font-size: 1.5em;
+      text-align: center;
+      line-height: 1em;
+      padding: 0.25rem;
+      background: white;
+      border-radius: 50%;
+    }
+  }
+
+  @for $i from 1 to 5 {
+    .player[data-position="#{$i}"] {
+      background: player-color($i);
+
+      &::before {
+        content: map-get($player-icons, $i);
+      }
+    }
+  }
+}
