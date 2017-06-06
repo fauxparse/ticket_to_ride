@@ -5,6 +5,8 @@ import environment from '../environment'
 
 import PlayerList from './PlayerList'
 import Hand from './Hand'
+import Deck from './Deck'
+import TicketDeck from './TicketDeck'
 import FaceUpCards from './FaceUpCards'
 import Board from './Board'
 
@@ -47,23 +49,25 @@ class Game extends React.Component {
     } else if (props) {
       return (
         <div className="game">
-          <header>
-            <PlayerList data={props.game} />
-          </header>
           <main>
+            <header>
+              <PlayerList data={props.game} />
+            </header>
             <Board data={props.game} />
-            <aside>
-              <FaceUpCards data={props.game} />
-            </aside>
+            <footer>
+              <Hand data={props.game} />
+            </footer>
           </main>
-          <footer>
-            <Hand data={props.game} />
-          </footer>
+          <aside>
+            <Deck />
+            <FaceUpCards data={props.game} />
+            <TicketDeck />
+          </aside>
         </div>
       )
     } else {
       return <div>Loading…</div>
-    }
+      }
   }
 }
 

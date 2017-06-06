@@ -23,6 +23,7 @@ $card-border: 0.5em;
 
   aside & {
     flex-direction: column;
+    justify-content: flex-start;
 
     .card-container {
       flex: 0 1 ($card-width + $card-border);
@@ -51,7 +52,7 @@ $card-border: 0.5em;
 
   .face,
   .back {
-    border: $card-border solid material-color('grey', '100');
+    border: $card-border solid white;
     border-radius: $card-border;
     background: material-color('grey', '300');
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -69,10 +70,29 @@ $card-border: 0.5em;
       content: "🛤";
       position: absolute;
       left: 0;
-      bottom: -0.1em;
+      bottom: 0;
       font-size: 5em;
-      line-height: 1em;
+      line-height: 0.8em;
       mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+  }
+
+  &.ticket .back {
+    background: material-color('amber', '200');
+
+    &::before {
+      content: "🗺";
+      font-size: 8em;
+      transform: rotate(90deg);
+      transform-origin: 0 0;
+      left: calc(100% + 0.05em);
+      top: -0.075em;
+      bottom: auto;
+      line-height: 1em;
+      width: 1em;
+      mix-blend-mode: multiply;
+      opacity: 0.5;
     }
   }
 
@@ -141,4 +161,24 @@ $card-border: 0.5em;
       content: "🚂";
     }
   }
+}
+
+.deck {
+  flex: 0 0 $card-width;
+  width: $card-height;
+  margin: 0.75em $card-border 0;
+  position: relative;
+
+  .card {
+    top: 100%;
+    transform: rotate(-90deg);
+    transform-origin: 0 0;
+
+    &:nth-child(2) { transform: translateY(-0.125em) rotate(-90deg); }
+    &:nth-child(3) { transform: translateY(-0.25em) rotate(-90deg); }
+  }
+}
+
+.ticket-deck {
+  margin: 0.25em $card-border $card-border;
 }

@@ -4,7 +4,7 @@ import { forOwn, groupBy, toPairs } from 'lodash'
 
 const ASPECT_RATIO = 3 / 2
 const CITY_SIZE = 8
-const CAR_LENGTH = 30
+const CAR_LENGTH = 31
 const GAP_SIZE = 6
 
 class Board extends React.Component {
@@ -49,8 +49,8 @@ class Board extends React.Component {
 
   coordinates(x, y) {
     return {
-      x: (x * 0.9 + 0.05) * this.width,
-      y: (y * 0.9 + 0.05) * this.height
+      x: (x * 0.95 + 0.025) * this.width,
+      y: (y * 0.95 + 0.025) * this.height
     }
   }
 

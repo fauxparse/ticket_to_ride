@@ -4,9 +4,10 @@
   left: 0;
   right: 0;
   bottom: 0;
+  background: material-color('grey', '200');
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: stretch;
 
   header,
@@ -28,28 +29,35 @@
   main {
     flex: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: stretch;
+    margin-left: 0.5em;
 
     .board {
       flex: 1;
+      background: material-color('grey', '100');
+      box-shadow: 0 0 0.5em rgba(black, 0.15), inset 0 0 2em rgba(black, 0.15);
+      position: relative;
+      z-index: 1;
+      border: 0.5em solid white;
+      border-radius: 0.25em;
     }
+  }
 
-    aside {
+  aside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+
+    .face-up {
+      flex: 1;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: stretch;
-
-      .face-up {
-        flex: 1;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: stretch;
-      }
     }
   }
 }

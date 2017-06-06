@@ -18,7 +18,7 @@ cities:
     y: 0.66
   chicago:
     name: Chicago
-    x: 0.70
+    x: 0.705
     y: 0.39
   dallas:
     name: Dallas
@@ -26,7 +26,7 @@ cities:
     y: 0.80
   denver:
     name: Denver
-    x: 0.38
+    x: 0.385
     y: 0.55
   duluth:
     name: Duluth
@@ -94,7 +94,7 @@ cities:
     y: 0.78
   pittsburg:
     name: Pittsburg
-    x: 0.84
+    x: 0.843
     y: 0.37
   portland:
     name: Portland
@@ -110,11 +110,11 @@ cities:
     y: 0.52
   salt_lake_city:
     name: Salt Lake City
-    x: 0.242
+    x: 0.25
     y: 0.50
   san_francisco:
     name: San Francisco
-    x: 0.035
+    x: 0.046
     y: 0.61
   santa_fe:
     name: Santa Fe
@@ -139,7 +139,7 @@ cities:
   washington:
     name: Washington
     x: 0.94
-    y: 0.44
+    y: 0.445
   winnipeg:
     name: Winnipeg
     x: 0.45
@@ -537,8 +537,8 @@ routes:
     to: phoenix
     length: 3
     color: wild
-  - from: el_paso
-    to: phoenix
+  - from: phoenix
+    to: el_paso
     length: 3
     color: wild
   - from: santa_fe
