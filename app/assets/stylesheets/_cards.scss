@@ -128,7 +128,7 @@ $card-border: 0.5em;
   }
 
   &[data-color="pink"] .face { background: material-color('pink', '500'); }
-  &[data-color="white"] .face { background: white; }
+  &[data-color="white"] .face { background: material-color('grey', '100'); }
   &[data-color="blue"] .face { background: material-color('blue', '500'); }
   &[data-color="yellow"] .face { background: material-color('yellow', '500'); }
   &[data-color="orange"] .face { background: material-color('orange', '500'); }
