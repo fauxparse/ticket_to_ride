@@ -163,6 +163,20 @@ $card-border: 0.5em;
   }
 }
 
+.hand {
+  position: relative;
+  z-index: 1;
+
+  .card-container {
+    transition: transform 0.15s ease;
+    cursor: pointer;
+  }
+
+  .selected {
+    transform: translateY(-2em);
+  }
+}
+
 .deck {
   flex: 0 0 $card-width;
   width: $card-height;

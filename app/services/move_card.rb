@@ -1,13 +1,19 @@
 class MoveCard
-  attr_reader :card, :to
+  attr_reader :card, :list
 
-  def initialize(card, to)
+  def initialize(card, list)
     @card = card
-    @from = card.list
-    @to = to
+    @list = list
   end
 
   def call
-    card.update!(list: to)
+    card.update!(list: list)
+    ReshuffleDiscardPile.new(game).call if deck.empty?
+    card
   end
+
+  private
+
+  delegate :game, to: :list
+  delegate :deck, to: :game
 end

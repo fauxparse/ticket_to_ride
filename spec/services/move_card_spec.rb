@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe MoveCard, type: :service do
-  let(:game) { Game.create! }
+  let(:game) { CreateGame.new.call }
   let(:player1) { game.players.create }
   let(:player2) { game.players.create }
 

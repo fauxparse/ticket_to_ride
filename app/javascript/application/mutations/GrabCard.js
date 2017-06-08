@@ -2,31 +2,27 @@ import { commitMutation, graphql } from 'react-relay'
 import { ConnectionHandler } from 'relay-runtime'
 
 const mutation = graphql`
-  mutation DrawCardMutation($input: DrawCardInput!) {
-    drawCard(input:$input) {
-      cardEdge {
-        __typename
-        cursor
-        node {
-          id
-          color
-          position
-        }
-      }
+  mutation GrabCardMutation($input: GrabCardInput!) {
+    grabCard(input:$input) {
       viewer {
         gameId
         ...Hand_viewer
         ...PlayerList_viewer
+        ...FaceUpCards_viewer
       }
     }
   }
 `
 
-function commit(environment, game) {
+function commit(environment, game, cardId) {
   return commitMutation(environment, {
     mutation,
     variables: {
-      input: { gameId: game.gameId, player: game.player.position }
+      input: {
+        gameId: game.gameId,
+        player: game.player.position,
+        cardId: cardId
+      }
     }
   })
 }

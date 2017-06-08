@@ -9,5 +9,6 @@ class CreateGame
     CreateDeck.new(game).call
     game.create_face_up
     game.create_discard_pile
+    game
   end
 end

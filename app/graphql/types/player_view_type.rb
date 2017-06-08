@@ -5,7 +5,7 @@ module Types
 
     field :position, !types.Int
 
-    connection :hand, CardType.connection_type do
+    connection :hand, CardPositionConnectionType do
       resolve ->(player, _, _) { player.cards }
     end
   end

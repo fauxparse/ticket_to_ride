@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Hand_viewer.graphql
- * @generated SignedSource<<fca62681cd188c9bfaef54cbbe9e381b>>
+ * @generated SignedSource<<69e6acef96eb8d345f72fafa03e0a425>>
  * @flow
  * @nogrep
  */
@@ -19,7 +19,10 @@ export type Hand_viewer = {|
     +position: number;
     +hand: ?{|
       +edges: ?$ReadOnlyArray<?{|
-        +node: ?{| |};
+        +position: ?number;
+        +node: ?{|
+          +id: string;
+        |};
       |}>;
     |};
   |};
@@ -64,7 +67,7 @@ const fragment /*: ConcreteFragment*/ = {
           "kind": "LinkedField",
           "alias": "hand",
           "args": null,
-          "concreteType": "CardConnection",
+          "concreteType": "CardPositionConnection",
           "name": "__Hand_hand_connection",
           "plural": false,
           "selections": [
@@ -72,10 +75,17 @@ const fragment /*: ConcreteFragment*/ = {
               "kind": "LinkedField",
               "alias": null,
               "args": null,
-              "concreteType": "CardEdge",
+              "concreteType": "CardPositionEdge",
               "name": "edges",
               "plural": true,
               "selections": [
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "args": null,
+                  "name": "position",
+                  "storageKey": null
+                },
                 {
                   "kind": "LinkedField",
                   "alias": null,
@@ -84,6 +94,13 @@ const fragment /*: ConcreteFragment*/ = {
                   "name": "node",
                   "plural": false,
                   "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "args": null,
+                      "name": "id",
+                      "storageKey": null
+                    },
                     {
                       "kind": "FragmentSpread",
                       "name": "Card_card",

@@ -1,3 +1,4 @@
 class DiscardPile < ApplicationRecord
-  has_many :cards, as: :list
+  belongs_to :game
+  has_many :cards, -> { order(position: :asc) }, as: :list
 end

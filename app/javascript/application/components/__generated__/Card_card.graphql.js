@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Card_card.graphql
- * @generated SignedSource<<a2e9e05fcd39b92ad8b41f9f94259e7d>>
+ * @generated SignedSource<<331647a77fd7ba0dcab2e81e1705d7ed>>
  * @flow
  * @nogrep
  */
@@ -15,7 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Card_card = {|
-  +position: number;
+  +id: string;
   +color: "PINK" | "WHITE" | "BLUE" | "YELLOW" | "ORANGE" | "BLACK" | "RED" | "GREEN" | "WILD";
 |};
 */
@@ -31,7 +31,7 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "position",
+      "name": "id",
       "storageKey": null
     },
     {
