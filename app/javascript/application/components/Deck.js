@@ -22,7 +22,9 @@ export default createFragmentContainer(Deck, {
   viewer: graphql`
     fragment Deck_viewer on Game {
       id
-      playerPosition
+      player {
+        position
+      }
     }
   `
 })

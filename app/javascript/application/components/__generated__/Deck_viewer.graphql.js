@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Deck_viewer.graphql
- * @generated SignedSource<<6402b43f045fcf13b0000656470449c8>>
+ * @generated SignedSource<<6592f9d6fc7e6f2729bb2998e2a62b41>>
  * @flow
  * @nogrep
  */
@@ -16,7 +16,9 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type Deck_viewer = {|
   +id: string;
-  +playerPosition: number;
+  +player: ?{|
+    +position: number;
+  |};
 |};
 */
 
@@ -35,10 +37,21 @@ const fragment /*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
       "args": null,
-      "name": "playerPosition",
+      "concreteType": "PlayerView",
+      "name": "player",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "position",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     }
   ],

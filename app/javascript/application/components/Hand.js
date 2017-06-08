@@ -5,7 +5,7 @@ import Card from './card'
 
 class Hand extends React.Component {
   render() {
-    const cards = this.props.viewer.hand
+    const cards = this.props.viewer.player.hand
     return (
       <section className="hand">
         <div className="cards">
@@ -21,14 +21,16 @@ class Hand extends React.Component {
 export default createFragmentContainer(Hand, {
   viewer: graphql`
     fragment Hand_viewer on Game {
-      hand(first: 100) @connection(key: "Hand_hand") {
-        edges {
-          node {
-            ...Card_card
+      player {
+        position
+        hand(first: 100) @connection(key: "Hand_hand") {
+          edges {
+            node {
+              ...Card_card
+            }
           }
         }
       }
-      playerPosition
     }
     `
 })

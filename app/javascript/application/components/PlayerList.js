@@ -4,7 +4,7 @@ import { graphql, createFragmentContainer } from 'react-relay'
 
 class PlayerList extends React.Component {
   render() {
-    const { players, playerPosition: me } = this.props.viewer
+    const { players, player: { position: me } } = this.props.viewer
     return (
       <ol className="players">
         {players.edges.map(
@@ -25,7 +25,9 @@ export default createFragmentContainer(PlayerList, {
           }
         }
       }
-      playerPosition
+      player {
+        position
+      }
     }
   `
 })

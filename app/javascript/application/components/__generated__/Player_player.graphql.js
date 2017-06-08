@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Player_player.graphql
- * @generated SignedSource<<698ba424b935a108006c43010add7a09>>
+ * @generated SignedSource<<fbbaa86b4c7b4b396bd2d13ac383b709>>
  * @flow
  * @nogrep
  */
@@ -17,6 +17,7 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type Player_player = {|
   +position: number;
   +name: string;
+  +handSize: ?number;
 |};
 */
 
@@ -39,6 +40,13 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "name",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "handSize",
       "storageKey": null
     }
   ],

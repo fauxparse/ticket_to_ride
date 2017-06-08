@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Hand_viewer.graphql
- * @generated SignedSource<<d2356ca93fbac2de0bb8e1dd56f5251b>>
+ * @generated SignedSource<<fca62681cd188c9bfaef54cbbe9e381b>>
  * @flow
  * @nogrep
  */
@@ -15,12 +15,14 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Hand_viewer = {|
-  +hand: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{| |};
-    |}>;
+  +player: ?{|
+    +position: number;
+    +hand: ?{|
+      +edges: ?$ReadOnlyArray<?{|
+        +node: ?{| |};
+      |}>;
+    |};
   |};
-  +playerPosition: number;
 |};
 */
 
@@ -35,6 +37,7 @@ const fragment /*: ConcreteFragment*/ = {
         "cursor": null,
         "direction": "forward",
         "path": [
+          "player",
           "hand"
         ]
       }
@@ -44,32 +47,50 @@ const fragment /*: ConcreteFragment*/ = {
   "selections": [
     {
       "kind": "LinkedField",
-      "alias": "hand",
+      "alias": null,
       "args": null,
-      "concreteType": "CardConnection",
-      "name": "__Hand_hand_connection",
+      "concreteType": "PlayerView",
+      "name": "player",
       "plural": false,
       "selections": [
         {
-          "kind": "LinkedField",
+          "kind": "ScalarField",
           "alias": null,
           "args": null,
-          "concreteType": "CardEdge",
-          "name": "edges",
-          "plural": true,
+          "name": "position",
+          "storageKey": null
+        },
+        {
+          "kind": "LinkedField",
+          "alias": "hand",
+          "args": null,
+          "concreteType": "CardConnection",
+          "name": "__Hand_hand_connection",
+          "plural": false,
           "selections": [
             {
               "kind": "LinkedField",
               "alias": null,
               "args": null,
-              "concreteType": "Card",
-              "name": "node",
-              "plural": false,
+              "concreteType": "CardEdge",
+              "name": "edges",
+              "plural": true,
               "selections": [
                 {
-                  "kind": "FragmentSpread",
-                  "name": "Card_card",
-                  "args": null
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "args": null,
+                  "concreteType": "Card",
+                  "name": "node",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "FragmentSpread",
+                      "name": "Card_card",
+                      "args": null
+                    }
+                  ],
+                  "storageKey": null
                 }
               ],
               "storageKey": null
@@ -78,13 +99,6 @@ const fragment /*: ConcreteFragment*/ = {
           "storageKey": null
         }
       ],
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "playerPosition",
       "storageKey": null
     }
   ],

@@ -15,6 +15,7 @@ const mutation = graphql`
       viewer {
         id
         ...Hand_viewer
+        ...PlayerList_viewer
       }
     }
   }
@@ -26,7 +27,7 @@ function commit(environment, game) {
     {
       mutation,
       variables: {
-        input: { gameId: game.id, player: game.playerPosition },
+        input: { gameId: game.id, player: game.player.position },
       }
     }
   )

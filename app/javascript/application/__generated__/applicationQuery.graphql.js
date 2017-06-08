@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule applicationQuery.graphql
- * @generated SignedSource<<dfbe204b154929e14bc3ad8e772d6092>>
- * @relayHash e14933f62e0fc81037f407b0067c20ca
+ * @generated SignedSource<<c8042a9fe09d27d56b59d9e756bbcc94>>
+ * @relayHash a7249582edd91afbe15edccb53a92a06
  * @flow
  * @nogrep
  */
@@ -46,26 +46,30 @@ fragment PlayerList_viewer on Game {
       }
     }
   }
-  playerPosition
+  player {
+    position
+  }
 }
 
 fragment Hand_viewer on Game {
-  hand(first: 100) {
-    edges {
-      node {
-        ...Card_card
-        __typename
+  player {
+    position
+    hand(first: 100) {
+      edges {
+        node {
+          ...Card_card
+          __typename
+        }
+        cursor
       }
-      cursor
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-      hasPreviousPage
-      startCursor
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
     }
   }
-  playerPosition
 }
 
 fragment FaceUpCards_viewer on Game {
@@ -104,7 +108,9 @@ fragment Board_viewer on Game {
 
 fragment Deck_viewer on Game {
   id
-  playerPosition
+  player {
+    position
+  }
 }
 
 fragment Card_card on Card {
@@ -115,6 +121,7 @@ fragment Card_card on Card {
 fragment Player_player on Player {
   position
   name
+  handSize
 }
 */
 
@@ -251,6 +258,13 @@ const batch /*: ConcreteBatch*/ = {
                         "args": null,
                         "name": "name",
                         "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "handSize",
+                        "storageKey": null
                       }
                     ],
                     "storageKey": null
@@ -262,134 +276,145 @@ const batch /*: ConcreteBatch*/ = {
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "playerPosition",
-            "storageKey": null
-          },
-          {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 100,
-                "type": "Int"
-              }
-            ],
-            "concreteType": "CardConnection",
-            "name": "hand",
+            "args": null,
+            "concreteType": "PlayerView",
+            "name": "player",
             "plural": false,
             "selections": [
               {
-                "kind": "LinkedField",
+                "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "concreteType": "CardEdge",
-                "name": "edges",
-                "plural": true,
+                "name": "position",
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "first",
+                    "value": 100,
+                    "type": "Int"
+                  }
+                ],
+                "concreteType": "CardConnection",
+                "name": "hand",
+                "plural": false,
                 "selections": [
                   {
                     "kind": "LinkedField",
                     "alias": null,
                     "args": null,
-                    "concreteType": "Card",
-                    "name": "node",
+                    "concreteType": "CardEdge",
+                    "name": "edges",
+                    "plural": true,
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "Card",
+                        "name": "node",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "position",
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "color",
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "__typename",
+                            "storageKey": null
+                          }
+                        ],
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "cursor",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "PageInfo",
+                    "name": "pageInfo",
                     "plural": false,
                     "selections": [
                       {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "name": "position",
+                        "name": "endCursor",
                         "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "name": "color",
+                        "name": "hasNextPage",
                         "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
-                        "name": "__typename",
+                        "name": "hasPreviousPage",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "startCursor",
                         "storageKey": null
                       }
                     ],
                     "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "cursor",
-                    "storageKey": null
                   }
                 ],
-                "storageKey": null
+                "storageKey": "hand{\"first\":100}"
               },
               {
-                "kind": "LinkedField",
+                "kind": "LinkedHandle",
                 "alias": null,
-                "args": null,
-                "concreteType": "PageInfo",
-                "name": "pageInfo",
-                "plural": false,
-                "selections": [
+                "args": [
                   {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "endCursor",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasNextPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasPreviousPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "startCursor",
-                    "storageKey": null
+                    "kind": "Literal",
+                    "name": "first",
+                    "value": 100,
+                    "type": "Int"
                   }
                 ],
-                "storageKey": null
+                "handle": "connection",
+                "name": "hand",
+                "key": "Hand_hand",
+                "filters": null
               }
             ],
-            "storageKey": "hand{\"first\":100}"
-          },
-          {
-            "kind": "LinkedHandle",
-            "alias": null,
-            "args": [
-              {
-                "kind": "Literal",
-                "name": "first",
-                "value": 100,
-                "type": "Int"
-              }
-            ],
-            "handle": "connection",
-            "name": "hand",
-            "key": "Hand_hand",
-            "filters": null
+            "storageKey": null
           },
           {
             "kind": "LinkedField",
@@ -608,7 +633,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query applicationQuery(\n  $gameId: ID!\n  $player: Int!\n) {\n  viewer(id: $gameId, player: $player) {\n    ...Game_viewer\n    id\n  }\n}\n\nfragment Game_viewer on Game {\n  ...PlayerList_viewer\n  ...Hand_viewer\n  ...FaceUpCards_viewer\n  ...Board_viewer\n  ...Deck_viewer\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n      }\n    }\n  }\n  playerPosition\n}\n\nfragment Hand_viewer on Game {\n  hand(first: 100) {\n    edges {\n      node {\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  playerPosition\n}\n\nfragment FaceUpCards_viewer on Game {\n  cards(first: 5) {\n    edges {\n      node {\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Board_viewer on Game {\n  board {\n    cities {\n      key\n      name\n      x\n      y\n    }\n    routes {\n      cities\n      length\n      color\n    }\n  }\n}\n\nfragment Deck_viewer on Game {\n  id\n  playerPosition\n}\n\nfragment Card_card on Card {\n  position\n  color\n}\n\nfragment Player_player on Player {\n  position\n  name\n}\n"
+  "text": "query applicationQuery(\n  $gameId: ID!\n  $player: Int!\n) {\n  viewer(id: $gameId, player: $player) {\n    ...Game_viewer\n    id\n  }\n}\n\nfragment Game_viewer on Game {\n  ...PlayerList_viewer\n  ...Hand_viewer\n  ...FaceUpCards_viewer\n  ...Board_viewer\n  ...Deck_viewer\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n      }\n    }\n  }\n  player {\n    position\n  }\n}\n\nfragment Hand_viewer on Game {\n  player {\n    position\n    hand(first: 100) {\n      edges {\n        node {\n          ...Card_card\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment FaceUpCards_viewer on Game {\n  cards(first: 5) {\n    edges {\n      node {\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Board_viewer on Game {\n  board {\n    cities {\n      key\n      name\n      x\n      y\n    }\n    routes {\n      cities\n      length\n      color\n    }\n  }\n}\n\nfragment Deck_viewer on Game {\n  id\n  player {\n    position\n  }\n}\n\nfragment Card_card on Card {\n  position\n  color\n}\n\nfragment Player_player on Player {\n  position\n  name\n  handSize\n}\n"
 };
 
 module.exports = batch;
