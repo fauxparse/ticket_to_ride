@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule applicationQuery.graphql
- * @generated SignedSource<<6d0c7f4c37f81371725261bd5ea501df>>
- * @relayHash 8f448198219592aa36a08cd54fc621ca
+ * @generated SignedSource<<dfbe204b154929e14bc3ad8e772d6092>>
+ * @relayHash e14933f62e0fc81037f407b0067c20ca
  * @flow
  * @nogrep
  */
@@ -26,6 +26,7 @@ query applicationQuery(
 ) {
   viewer(id: $gameId, player: $player) {
     ...Game_viewer
+    id
   }
 }
 
@@ -34,6 +35,7 @@ fragment Game_viewer on Game {
   ...Hand_viewer
   ...FaceUpCards_viewer
   ...Board_viewer
+  ...Deck_viewer
 }
 
 fragment PlayerList_viewer on Game {
@@ -44,7 +46,7 @@ fragment PlayerList_viewer on Game {
       }
     }
   }
-  player_position
+  playerPosition
 }
 
 fragment Hand_viewer on Game {
@@ -63,7 +65,7 @@ fragment Hand_viewer on Game {
       startCursor
     }
   }
-  player_position
+  playerPosition
 }
 
 fragment FaceUpCards_viewer on Game {
@@ -98,6 +100,11 @@ fragment Board_viewer on Game {
       color
     }
   }
+}
+
+fragment Deck_viewer on Game {
+  id
+  playerPosition
 }
 
 fragment Card_card on Card {
@@ -258,7 +265,7 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
-            "name": "player_position",
+            "name": "playerPosition",
             "storageKey": null
           },
           {
@@ -588,13 +595,20 @@ const batch /*: ConcreteBatch*/ = {
               }
             ],
             "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "id",
+            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query applicationQuery(\n  $gameId: ID!\n  $player: Int!\n) {\n  viewer(id: $gameId, player: $player) {\n    ...Game_viewer\n  }\n}\n\nfragment Game_viewer on Game {\n  ...PlayerList_viewer\n  ...Hand_viewer\n  ...FaceUpCards_viewer\n  ...Board_viewer\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n      }\n    }\n  }\n  player_position\n}\n\nfragment Hand_viewer on Game {\n  hand(first: 100) {\n    edges {\n      node {\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  player_position\n}\n\nfragment FaceUpCards_viewer on Game {\n  cards(first: 5) {\n    edges {\n      node {\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Board_viewer on Game {\n  board {\n    cities {\n      key\n      name\n      x\n      y\n    }\n    routes {\n      cities\n      length\n      color\n    }\n  }\n}\n\nfragment Card_card on Card {\n  position\n  color\n}\n\nfragment Player_player on Player {\n  position\n  name\n}\n"
+  "text": "query applicationQuery(\n  $gameId: ID!\n  $player: Int!\n) {\n  viewer(id: $gameId, player: $player) {\n    ...Game_viewer\n    id\n  }\n}\n\nfragment Game_viewer on Game {\n  ...PlayerList_viewer\n  ...Hand_viewer\n  ...FaceUpCards_viewer\n  ...Board_viewer\n  ...Deck_viewer\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n      }\n    }\n  }\n  playerPosition\n}\n\nfragment Hand_viewer on Game {\n  hand(first: 100) {\n    edges {\n      node {\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n  playerPosition\n}\n\nfragment FaceUpCards_viewer on Game {\n  cards(first: 5) {\n    edges {\n      node {\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Board_viewer on Game {\n  board {\n    cities {\n      key\n      name\n      x\n      y\n    }\n    routes {\n      cities\n      length\n      color\n    }\n  }\n}\n\nfragment Deck_viewer on Game {\n  id\n  playerPosition\n}\n\nfragment Card_card on Card {\n  position\n  color\n}\n\nfragment Player_player on Player {\n  position\n  name\n}\n"
 };
 
 module.exports = batch;

@@ -28,7 +28,7 @@ class Game extends React.Component {
           </footer>
         </main>
         <aside>
-          <Deck />
+          <Deck viewer={viewer} />
           <FaceUpCards viewer={viewer} />
           <TicketDeck />
         </aside>
@@ -44,6 +44,7 @@ export default createFragmentContainer(Game, {
       ...Hand_viewer
       ...FaceUpCards_viewer
       ...Board_viewer
+      ...Deck_viewer
     }
   `
 })

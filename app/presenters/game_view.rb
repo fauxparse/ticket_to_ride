@@ -14,9 +14,5 @@ class GameView
     game.face_up.cards
   end
 
-  def player_position
-    player.position
-  end
-
-  delegate :players, :board, to: :game
+  delegate :id, :players, :board, to: :game
 end

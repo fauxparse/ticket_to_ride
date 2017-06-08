@@ -6,8 +6,12 @@ class DrawCard
   end
 
   def call
-    MoveCard.new(deck.cards.first, list).call
+    MoveCard.new(card, list).call
     reshuffle_discard_pile if deck.empty?
+  end
+
+  def card
+    @card ||= deck.cards.first
   end
 
   private

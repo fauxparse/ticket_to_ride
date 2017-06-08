@@ -28,7 +28,7 @@ export default createFragmentContainer(Hand, {
           }
         }
       }
-      player_position
+      playerPosition
     }
     `
 })

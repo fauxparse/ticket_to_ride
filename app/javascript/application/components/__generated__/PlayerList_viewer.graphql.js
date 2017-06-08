@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule PlayerList_viewer.graphql
- * @generated SignedSource<<ff5a6e7741d70acb97f0f4261050dd7e>>
+ * @generated SignedSource<<a5ca8c95c3edaabbd526f3df0728ec74>>
  * @flow
  * @nogrep
  */
@@ -20,7 +20,7 @@ export type PlayerList_viewer = {|
       +node: ?{| |};
     |}>;
   |};
-  +player_position: number;
+  +playerPosition: number;
 |};
 */
 
@@ -73,7 +73,7 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "player_position",
+      "name": "playerPosition",
       "storageKey": null
     }
   ],

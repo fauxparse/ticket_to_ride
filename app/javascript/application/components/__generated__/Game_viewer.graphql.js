@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Game_viewer.graphql
- * @generated SignedSource<<1113c1ef95ccaf1bb52046636141853f>>
+ * @generated SignedSource<<9eb869962c83769e4d6beac58aad6713>>
  * @flow
  * @nogrep
  */
@@ -42,6 +42,11 @@ const fragment /*: ConcreteFragment*/ = {
     {
       "kind": "FragmentSpread",
       "name": "Board_viewer",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "Deck_viewer",
       "args": null
     }
   ],

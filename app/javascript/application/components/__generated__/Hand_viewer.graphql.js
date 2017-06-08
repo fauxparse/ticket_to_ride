@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Hand_viewer.graphql
- * @generated SignedSource<<80b350cf59520736cfc4e45659fb3e1f>>
+ * @generated SignedSource<<d2356ca93fbac2de0bb8e1dd56f5251b>>
  * @flow
  * @nogrep
  */
@@ -20,7 +20,7 @@ export type Hand_viewer = {|
       +node: ?{| |};
     |}>;
   |};
-  +player_position: number;
+  +playerPosition: number;
 |};
 */
 
@@ -84,7 +84,7 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "player_position",
+      "name": "playerPosition",
       "storageKey": null
     }
   ],

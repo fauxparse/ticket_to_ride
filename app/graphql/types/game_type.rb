@@ -3,7 +3,10 @@ module Types
     name 'Game'
     description 'A game'
 
-    field :player_position, !types.Int
+    field :id, !types.ID
+    field :playerPosition, !types.Int do
+      resolve ->(game, _, _) { game.player.position }
+    end
     field :board, !BoardType
 
     connection :hand, CardType.connection_type
