@@ -15,7 +15,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const { cities, routes } = this.props.data.board
+    const { cities, routes } = this.props.viewer.board
     const indexedCities = cities.reduce(
       (h, city) => ({ ...h, [city.key]: city }),
       {}
@@ -175,23 +175,22 @@ class BoardRoute extends React.Component {
   }
 }
 
-export default createFragmentContainer(
-  Board,
-  graphql`
-  fragment Board on Game {
-    board {
-      cities {
-        key
-        name
-        x
-        y
-      }
-      routes {
-        cities
-        length
-        color
+export default createFragmentContainer(Board, {
+  viewer: graphql`
+    fragment Board_viewer on Game {
+      board {
+        cities {
+          key
+          name
+          x
+          y
+        }
+        routes {
+          cities
+          length
+          color
+        }
       }
     }
-  }
-`
-)
+  `
+})

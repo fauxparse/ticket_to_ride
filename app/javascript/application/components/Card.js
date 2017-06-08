@@ -4,7 +4,7 @@ import classNames from 'classnames'
 
 class Card extends React.Component {
   render() {
-    const { color } = this.props.data
+    const { color } = this.props.card
     const { facing } = this.props
     return (
       <div className="card-container">
@@ -17,9 +17,11 @@ class Card extends React.Component {
   }
 }
 
-export default createFragmentContainer(Card, graphql`
-  fragment Card on Card {
-    position
-    color
-  }
-`)
+export default createFragmentContainer(Card, {
+  card: graphql`
+    fragment Card_card on Card {
+      position
+      color
+    }
+  `
+})

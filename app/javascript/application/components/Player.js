@@ -5,7 +5,7 @@ import classNames from 'classnames'
 class Player extends React.Component {
   render() {
     const { me } = this.props
-    const { name, position } = this.props.data
+    const { name, position } = this.props.player
     return (
       <li className={classNames('player', { me: me == position })} data-position={position}>
         <div className="name">{name}</div>
@@ -14,9 +14,11 @@ class Player extends React.Component {
   }
 }
 
-export default createFragmentContainer(Player, graphql`
-  fragment Player on Player {
-    position
-    name
-  }
-`)
+export default createFragmentContainer(Player, {
+  player: graphql`
+    fragment Player_player on Player {
+      position
+      name
+    }
+  `
+})
