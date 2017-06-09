@@ -11,10 +11,12 @@ import Board from './Board'
 class Game extends React.Component {
   constructor(props) {
     super(props)
+    this.state = { selectedCards: new Set() }
   }
 
   render() {
     const { viewer } = this.props
+    const { selectedCards } = this.state
 
     return (
       <div className="game">
@@ -22,9 +24,13 @@ class Game extends React.Component {
           <header>
             <PlayerList viewer={viewer} />
           </header>
-          <Board viewer={viewer} />
+          <Board viewer={viewer} selectedCards={selectedCards} />
           <footer>
-            <Hand viewer={viewer} />
+            <Hand
+              viewer={viewer}
+              onSelectionChange={selectedCards =>
+                this.setState({ selectedCards })}
+            />
           </footer>
         </main>
         <aside>

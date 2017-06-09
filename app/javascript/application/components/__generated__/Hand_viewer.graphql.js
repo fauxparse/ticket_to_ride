@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Hand_viewer.graphql
- * @generated SignedSource<<69e6acef96eb8d345f72fafa03e0a425>>
+ * @generated SignedSource<<671eb307ee1cb57cfc7870c7d629ca8d>>
  * @flow
  * @nogrep
  */
@@ -22,6 +22,7 @@ export type Hand_viewer = {|
         +position: ?number;
         +node: ?{|
           +id: string;
+          +color: "PINK" | "WHITE" | "BLUE" | "YELLOW" | "ORANGE" | "BLACK" | "RED" | "GREEN" | "WILD";
         |};
       |}>;
     |};
@@ -99,6 +100,13 @@ const fragment /*: ConcreteFragment*/ = {
                       "alias": null,
                       "args": null,
                       "name": "id",
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "args": null,
+                      "name": "color",
                       "storageKey": null
                     },
                     {

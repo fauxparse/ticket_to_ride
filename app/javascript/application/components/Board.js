@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
-import { forOwn, groupBy, toPairs } from 'lodash'
+import { forOwn, groupBy, toPairs, uniq } from 'lodash'
+import classNames from 'classnames'
 
 const ASPECT_RATIO = 3 / 2
 const CITY_SIZE = 8
@@ -16,11 +17,20 @@ class Board extends React.Component {
 
   render() {
     const { cities, routes } = this.props.viewer.board
+    const { selectedCards } = this.props
     const indexedCities = cities.reduce(
       (h, city) => ({ ...h, [city.key]: city }),
       {}
     )
-    const groupedRoutes = groupBy(routes, ({ cities }) => cities)
+    const colors = Array.from(selectedCards).map(({ color }) => color)
+    const wilds = colors.filter(color => color == 'WILD').length
+    const sets = uniq(colors.filter(color => color != 'WILD')).map(color => ({
+      length: wilds + colors.filter(c => c == color).length,
+      color
+    }))
+    if (wilds) sets.push({ length: wilds, color: 'WILD' })
+    const groupedRoutes = groupBy(Array.from(routes), ({ cities }) => cities)
+
     return (
       <svg
         className="board"
@@ -37,11 +47,17 @@ class Board extends React.Component {
               a={{ city: a, ...axy }}
               b={{ city: b, ...bxy }}
               routes={group}
+              sets={sets}
             />
           )
         })}
         {cities.map(({ key, name, x, y }) => (
-          <BoardCity key={key} id={key} name={name} {...this.coordinates(x, y)} />
+          <BoardCity
+            key={key}
+            id={key}
+            name={name}
+            {...this.coordinates(x, y)}
+          />
         ))}
       </svg>
     )
@@ -65,19 +81,10 @@ class Board extends React.Component {
 
   routeLength(route, cities) {
     const c = route.cities.map(key =>
-      this.coordinates(cities[key].x, cities[key].y)
-    )
+      this.coordinates(cities[key].x, cities[key].y))
     const dx = c[1].x - c[0].x
     const dy = c[1].y - c[0].y
     return Math.sqrt(dx * dx + dy * dy)
-  }
-
-  renderRoute(key, a, b, color, length) {
-    const { x, y } = this.coordinates(a.x, a.y)
-    const { x: x2, y: y2 } = this.coordinates(b.x, b.y)
-    return (
-      <BoardRoute {...{ key, x, y, x2, y2, length }} color={color.toLowerCase()} />
-    )
   }
 }
 
@@ -92,14 +99,22 @@ const rotate = (a, n) => a.slice(n % a.length).concat(a.slice(0, n % a.length))
 
 class BoardRouteGroup extends React.Component {
   render() {
-    const { a, b, routes } = this.props
+    const { a, b, routes, sets } = this.props
     return (
       <g>
         {routes.map(({ color, length }, i) => {
           const [[x, y], [x2, y2]] = rotate([[a.x, a.y], [b.x, b.y]], i)
+          const available = !sets.length ||
+            sets.filter(
+              set =>
+                set.length >= length &&
+                ((set.color == color) || (set.color == 'WILD') || (color == 'WILD'))
+            ).length
+
           return (
             <BoardRoute
               key={i}
+              available={available}
               {...{ x, y, x2, y2, length }}
               radius={this.curveRadius()}
               color={color.toLowerCase()}
@@ -149,7 +164,7 @@ class BoardRouteGroup extends React.Component {
 
 class BoardRoute extends React.Component {
   render() {
-    const { x, y, x2, y2, color, length, radius } = this.props
+    const { x, y, x2, y2, color, length, radius, available } = this.props
     let path
 
     if (radius) {
@@ -159,9 +174,13 @@ class BoardRoute extends React.Component {
     }
 
     return (
-      <g className="route" data-color={color}>
-        <path d={path} className="outline" ref={p => this.dashPath(p, 1)} />
-        <path d={path} className="fill" ref={p => this.dashPath(p)} />
+      <g className={classNames('route', { available })} data-color={color}>
+        <path
+          d={path}
+          className="outline"
+          ref={p => p && this.dashPath(p, 1)}
+        />
+        <path d={path} className="fill" ref={p => p && this.dashPath(p)} />
       </g>
     )
   }
@@ -169,8 +188,15 @@ class BoardRoute extends React.Component {
   dashPath(path, offset = 0) {
     const { length } = this.props
     const pathLength = path.getTotalLength(path)
-    const endGap = (pathLength - CAR_LENGTH * length - GAP_SIZE * (length - 1)) / 2
-    const dashArray = `0, ${endGap - offset}, ` + `${CAR_LENGTH + offset * 2}, ${GAP_SIZE - offset * 2}, `.repeat(length - 1) + `${CAR_LENGTH + offset * 2}, ${endGap - offset}`
+    const endGap = (pathLength -
+      CAR_LENGTH * length -
+      GAP_SIZE * (length - 1)) /
+      2
+    const dashArray = `0, ${endGap - offset}, ` +
+      `${CAR_LENGTH + offset * 2}, ${GAP_SIZE - offset * 2}, `.repeat(
+        length - 1
+      ) +
+      `${CAR_LENGTH + offset * 2}, ${endGap - offset}`
     path.style.strokeDasharray = dashArray
   }
 }
@@ -178,6 +204,16 @@ class BoardRoute extends React.Component {
 export default createFragmentContainer(Board, {
   viewer: graphql`
     fragment Board_viewer on Game {
+      player {
+        hand(first: 100) @connection(key: "Board_hand") {
+          edges {
+            node {
+              cardId
+              color
+            }
+          }
+        }
+      }
       board {
         cities {
           key

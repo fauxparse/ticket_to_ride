@@ -1,4 +1,5 @@
 import React from 'react'
+import { find } from 'lodash'
 import { graphql, createFragmentContainer } from 'react-relay'
 
 import Card from './card'
@@ -6,13 +7,21 @@ import Card from './card'
 class Hand extends React.Component {
   _handleSelect = id => {
     const { selected } = this.state
+    const { onSelectionChange } = this.props
     if (selected.has(id)) {
       selected.delete(id)
     } else {
       selected.add(id)
     }
     this.setState({ selected })
+    onSelectionChange &&
+      onSelectionChange(Array.from(selected).map(this._cardById))
   }
+
+  _cardById = id => find(
+    this.props.viewer.player.hand.edges,
+    ({ node }) => node.id == id
+  ).node
 
   constructor(props) {
     super(props)
@@ -55,6 +64,7 @@ export default createFragmentContainer(Hand, {
             position
             node {
               id
+              color
               ...Card_card
             }
           }

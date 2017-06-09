@@ -77,6 +77,12 @@
 
 .board .route {
   mix-blend-mode: multiply;
+  opacity: 0.25;
+  transition: opacity 0.15s ease;
+
+  &.available {
+    opacity: 1;
+  }
 
   path {
     stroke: material-color('grey', '300');

@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule applicationQuery.graphql
- * @generated SignedSource<<ede420d7bed091bbcbe6f0ca498e3b71>>
- * @relayHash e0cadd82427c031c0605079d89edeb37
+ * @generated SignedSource<<2935dd6e7d4fdf6542d1c0dc3ba8ab51>>
+ * @relayHash 4651ce9a48df61d544f203dcdecc7c00
  * @flow
  * @nogrep
  */
@@ -60,6 +60,7 @@ fragment Hand_viewer on Game {
         position
         node {
           id
+          color
           ...Card_card
           __typename
         }
@@ -101,6 +102,25 @@ fragment FaceUpCards_viewer on Game {
 }
 
 fragment Board_viewer on Game {
+  player {
+    hand(first: 100) {
+      edges {
+        node {
+          cardId
+          color
+          id
+          __typename
+        }
+        cursor
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
   board {
     cities {
       key
@@ -365,6 +385,13 @@ const batch /*: ConcreteBatch*/ = {
                             "args": null,
                             "name": "__typename",
                             "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "cardId",
+                            "storageKey": null
                           }
                         ],
                         "storageKey": null
@@ -435,6 +462,22 @@ const batch /*: ConcreteBatch*/ = {
                 "handle": "connection",
                 "name": "hand",
                 "key": "Hand_hand",
+                "filters": null
+              },
+              {
+                "kind": "LinkedHandle",
+                "alias": null,
+                "args": [
+                  {
+                    "kind": "Literal",
+                    "name": "first",
+                    "value": 100,
+                    "type": "Int"
+                  }
+                ],
+                "handle": "connection",
+                "name": "hand",
+                "key": "Board_hand",
                 "filters": null
               }
             ],
@@ -678,7 +721,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query applicationQuery(\n  $gameId: ID!\n  $player: Int!\n) {\n  viewer(id: $gameId, player: $player) {\n    ...Game_viewer\n    id\n  }\n}\n\nfragment Game_viewer on Game {\n  ...PlayerList_viewer\n  ...Hand_viewer\n  ...FaceUpCards_viewer\n  ...Board_viewer\n  ...Deck_viewer\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n        id\n      }\n    }\n  }\n  player {\n    position\n  }\n}\n\nfragment Hand_viewer on Game {\n  player {\n    position\n    hand(first: 100) {\n      edges {\n        position\n        node {\n          id\n          ...Card_card\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment FaceUpCards_viewer on Game {\n  gameId\n  player {\n    position\n  }\n  cards(first: 5) {\n    edges {\n      position\n      node {\n        id\n        cardId\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Board_viewer on Game {\n  board {\n    cities {\n      key\n      name\n      x\n      y\n    }\n    routes {\n      cities\n      length\n      color\n    }\n  }\n}\n\nfragment Deck_viewer on Game {\n  gameId\n  player {\n    position\n  }\n}\n\nfragment Card_card on Card {\n  id\n  color\n}\n\nfragment Player_player on Player {\n  position\n  name\n  handSize\n}\n"
+  "text": "query applicationQuery(\n  $gameId: ID!\n  $player: Int!\n) {\n  viewer(id: $gameId, player: $player) {\n    ...Game_viewer\n    id\n  }\n}\n\nfragment Game_viewer on Game {\n  ...PlayerList_viewer\n  ...Hand_viewer\n  ...FaceUpCards_viewer\n  ...Board_viewer\n  ...Deck_viewer\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n        id\n      }\n    }\n  }\n  player {\n    position\n  }\n}\n\nfragment Hand_viewer on Game {\n  player {\n    position\n    hand(first: 100) {\n      edges {\n        position\n        node {\n          id\n          color\n          ...Card_card\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment FaceUpCards_viewer on Game {\n  gameId\n  player {\n    position\n  }\n  cards(first: 5) {\n    edges {\n      position\n      node {\n        id\n        cardId\n        ...Card_card\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Board_viewer on Game {\n  player {\n    hand(first: 100) {\n      edges {\n        node {\n          cardId\n          color\n          id\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n  board {\n    cities {\n      key\n      name\n      x\n      y\n    }\n    routes {\n      cities\n      length\n      color\n    }\n  }\n}\n\nfragment Deck_viewer on Game {\n  gameId\n  player {\n    position\n  }\n}\n\nfragment Card_card on Card {\n  id\n  color\n}\n\nfragment Player_player on Player {\n  position\n  name\n  handSize\n}\n"
 };
 
 module.exports = batch;

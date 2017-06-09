@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Board_viewer.graphql
- * @generated SignedSource<<e82efcf8cbf2c9a8ec000e2ef1117ef6>>
+ * @generated SignedSource<<3fa28bab557cedfc62d4788ab4dd865b>>
  * @flow
  * @nogrep
  */
@@ -15,6 +15,16 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Board_viewer = {|
+  +player: ?{|
+    +hand: ?{|
+      +edges: ?$ReadOnlyArray<?{|
+        +node: ?{|
+          +cardId: string;
+          +color: "PINK" | "WHITE" | "BLUE" | "YELLOW" | "ORANGE" | "BLACK" | "RED" | "GREEN" | "WILD";
+        |};
+      |}>;
+    |};
+  |};
   +board: {|
     +cities: $ReadOnlyArray<?{|
       +key: string;
@@ -35,9 +45,79 @@ export type Board_viewer = {|
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
-  "metadata": null,
+  "metadata": {
+    "connection": [
+      {
+        "count": null,
+        "cursor": null,
+        "direction": "forward",
+        "path": [
+          "player",
+          "hand"
+        ]
+      }
+    ]
+  },
   "name": "Board_viewer",
   "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "PlayerView",
+      "name": "player",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": "hand",
+          "args": null,
+          "concreteType": "CardPositionConnection",
+          "name": "__Board_hand_connection",
+          "plural": false,
+          "selections": [
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "args": null,
+              "concreteType": "CardPositionEdge",
+              "name": "edges",
+              "plural": true,
+              "selections": [
+                {
+                  "kind": "LinkedField",
+                  "alias": null,
+                  "args": null,
+                  "concreteType": "Card",
+                  "name": "node",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "args": null,
+                      "name": "cardId",
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "args": null,
+                      "name": "color",
+                      "storageKey": null
+                    }
+                  ],
+                  "storageKey": null
+                }
+              ],
+              "storageKey": null
+            }
+          ],
+          "storageKey": null
+        }
+      ],
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,

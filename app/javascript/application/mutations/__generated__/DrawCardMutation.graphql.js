@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule DrawCardMutation.graphql
- * @generated SignedSource<<2a5b32f945b0553ef308625866bdde49>>
- * @relayHash 476611139de35794dabc669b555f64e0
+ * @generated SignedSource<<04beab5be141552f0b95dfa6ed971dd7>>
+ * @relayHash a14052ed3bc677871cf70126dbb7c80d
  * @flow
  * @nogrep
  */
@@ -74,6 +74,7 @@ fragment Hand_viewer on Game {
         position
         node {
           id
+          color
           ...Card_card
           __typename
         }
@@ -563,7 +564,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "mutation DrawCardMutation(\n  $input: DrawCardInput!\n) {\n  drawCard(input: $input) {\n    cardEdge {\n      __typename\n      cursor\n      node {\n        id\n        color\n        position\n      }\n    }\n    viewer {\n      gameId\n      ...Hand_viewer\n      ...PlayerList_viewer\n      id\n    }\n  }\n}\n\nfragment Hand_viewer on Game {\n  player {\n    position\n    hand(first: 100) {\n      edges {\n        position\n        node {\n          id\n          ...Card_card\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n        id\n      }\n    }\n  }\n  player {\n    position\n  }\n}\n\nfragment Player_player on Player {\n  position\n  name\n  handSize\n}\n\nfragment Card_card on Card {\n  id\n  color\n}\n"
+  "text": "mutation DrawCardMutation(\n  $input: DrawCardInput!\n) {\n  drawCard(input: $input) {\n    cardEdge {\n      __typename\n      cursor\n      node {\n        id\n        color\n        position\n      }\n    }\n    viewer {\n      gameId\n      ...Hand_viewer\n      ...PlayerList_viewer\n      id\n    }\n  }\n}\n\nfragment Hand_viewer on Game {\n  player {\n    position\n    hand(first: 100) {\n      edges {\n        position\n        node {\n          id\n          color\n          ...Card_card\n          __typename\n        }\n        cursor\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment PlayerList_viewer on Game {\n  players {\n    edges {\n      node {\n        ...Player_player\n        id\n      }\n    }\n  }\n  player {\n    position\n  }\n}\n\nfragment Player_player on Player {\n  position\n  name\n  handSize\n}\n\nfragment Card_card on Card {\n  id\n  color\n}\n"
 };
 
 module.exports = batch;
